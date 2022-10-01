@@ -94,6 +94,8 @@ const pwdCharacter = [
 ];
 
 const genBtn = document.getElementById("generate");
+const pwdDis = document.querySelector(".pwdDis span");
+const notice = document.querySelector(".notice");
 
 genBtn.addEventListener("click", () => {
   const isUpper = document.getElementById("uCheck").checked;
@@ -111,8 +113,11 @@ genBtn.addEventListener("click", () => {
     inputArr.push(pwdNumber);
   }
 
-  console.log(inputArr);
-  console.log(getPwd(inputArr));
+  const password = getPwd(inputArr);
+  console.log(password);
+  pwdDis.innerText = password;
+  pwdDis.style.color = "white";
+  document.querySelector(".copyBtn").addEventListener("click", copyToClipboard);
 });
 
 function getPwdLength() {
@@ -158,4 +163,18 @@ function getPwd(arr) {
   }
 
   return password;
+}
+
+function copyToClipboard() {
+  var range = document.createRange();
+  range.selectNode(pwdDis);
+  window.getSelection().removeAllRanges(); // clear current selection
+  window.getSelection().addRange(range); // to select text
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges(); // to deselect
+  const notice = document.querySelector(".notShown");
+  notice.classList.add("notice");
+  setTimeout(() => {
+    notice.classList.remove("notice");
+  }, 1000);
 }
