@@ -102,10 +102,15 @@ genBtn.addEventListener("click", () => {
   const isSym = document.getElementById("sCheck").checked;
 
   const inputArr = [];
-  inputArr.push(pwdNumber);
-  isUpper && inputArr.push(pwdUpperCase);
-  isLower && inputArr.push(pwdLowerCase);
-  isSym && inputArr.push(pwdCharacter);
+  if (isNum || isUpper || isLower || isSym) {
+    isNum && inputArr.push(pwdNumber);
+    isUpper && inputArr.push(pwdUpperCase);
+    isLower && inputArr.push(pwdLowerCase);
+    isSym && inputArr.push(pwdCharacter);
+  } else {
+    inputArr.push(pwdNumber);
+  }
+
   console.log(inputArr);
   console.log(getPwd(inputArr));
 });
@@ -130,13 +135,17 @@ function getPwdLength() {
 function getPwd(arr) {
   const pwdLs = getPwdLength();
   const restLs = pwdLs - arr.length;
-  const firstArr = [...arr];
+  const targetArr = [...arr];
   const restArr = [];
   arr.forEach((item) => restArr.push(...item));
-  //   const desIdx = Math.floor(Math.random() * arr.length);
   let password = "";
-  for (let i = 0; i < firstArr.length + 1; i++) {
-    const targetArr = [...firstArr];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (targetArr.length === 1) {
+      const strIdx = Math.floor(Math.random() * targetArr[0].length);
+      password += targetArr[0][strIdx];
+      break;
+    }
     const desIdx = Math.floor(Math.random() * targetArr.length);
     const removed = targetArr.splice(desIdx, 1);
     const strIdx = Math.floor(Math.random() * removed[0].length);
