@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgb(44, 30, 80);
+}
+
+.passwordGen {
+  background-color: rgb(24, 14, 47);
+  width: 300px;
+  color: white;
+  padding: 1rem;
+  line-height: 200%;
+}
+
+.pwdDis span {
+  color: rgb(76, 53, 133);
+  background-color: rgb(11, 5, 25);
+  padding: 0 0.5rem;
+  display: inline-block;
+  width: 10rem;
+}
+
+#pwdls {
+  width: 2rem;
+  background-color: rgb(44, 30, 80);
+  color: white;
+  border: 1px solid rgb(44, 30, 80);
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+}
+
+#pwdls:focus,
+#pwdls:active {
+  border: 1px solid rgb(83, 57, 149);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button {
+  border: 0 solid rgb(83, 57, 149);
+  background-color: rgb(44, 30, 80);
+  color: inherit;
+  border-radius: 5px;
+  transition: all 0.1s ease-out;
+}
+
+#generate {
+  width: 100%;
+  padding: 0.5rem 0;
+  height: 50px;
+}
+
+#generate:hover {
+  font-size: 0.9rem;
+}
+button:active,
+#generate:active {
+  background-color: rgb(44, 30, 80);
+  border: 1px solid rgb(83, 57, 149);
+}
+
+.pwdDis {
+  display: flex;
+  justify-content: space-between;
+}
+
+.params {
+  position: relative;
+}
+
+.params input {
+  position: absolute;
+  right: 0;
+  transform: translateY(100%);
+}
+.params input:nth-of-type(1) {
+  position: absolute;
+  right: 0;
+  transform: translateY(50%);
+}
